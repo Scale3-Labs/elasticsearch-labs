@@ -222,7 +222,6 @@ langsmith==0.2.11
     #   langchain
     #   langchain-community
     #   langchain-core
-langtrace-python-sdk==3.3.26
     # via -r requirements.in
 markupsafe==3.0.2
     # via
@@ -499,7 +498,7 @@ yarl==1.18.3
     # via aiohttp
 zipp==3.21.0
     # via importlib-metadata
-langtrace-python-sdk>=3.3.14
+langtrace-python-sdk==3.3.29
 # The following packages are considered to be unsafe in a requirements file:
 # pip
 # setuptools
@@ -525,5 +524,5 @@ opentelemetry-instrumentation-sqlalchemy==0.50b0
 opentelemetry-instrumentation-system-metrics==0.50b0
 opentelemetry-instrumentation-tortoiseorm==0.50b0
 opentelemetry-instrumentation-urllib3==0.50b0
-elastic-opentelemetry-instrumentation-openai==0.6.0
+# elastic-opentelemetry-instrumentation-openai==0.6.0
 setuptools

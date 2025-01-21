@@ -1,29 +1,29 @@
-name: chatbot-rag-app
+name: my-service-name
 
 services:
-  ingest-data:
-    build:
-      context: .
-    container_name: ingest-data
-    restart: 'no'  # no need to re-ingest on successive runs
-    environment:
-      FLASK_APP: api/app.py
-    env_file:
-      - .env
-    command: flask create-index
-    extra_hosts:  # send localhost traffic to the docker host, e.g. your laptop
-        - "localhost:host-gateway"
+  # ingest-data:
+  #   build:
+  #     context: .
+  #   container_name: ingest-data
+  #   restart: 'no'  # no need to re-ingest on successive runs
+  #   environment:
+  #     FLASK_APP: api/app.py
+  #   env_file:
+  #     - .env
+  #   command: flask create-index
+  #   # extra_hosts:  # send localhost traffic to the docker host, e.g. your laptop
+  #   #     - "localhost:host-gateway"
 
   api-frontend:
-    depends_on:
-      ingest-data:
-        condition: service_completed_successfully
+    # depends_on:
+    #   ingest-data:
+    #     condition: service_completed_successfully
     container_name: api-frontend
     build:
       context: .
     env_file:
       - .env
     ports:
-      - "4000:4000"
-    extra_hosts:  # send localhost traffic to the docker host, e.g. your laptop
-        - "localhost:host-gateway"
+      - "3001:3001"
+    # extra_hosts:  # send localhost traffic to the docker host, e.g. your laptop
+    #     - "host.docker.internal:host-gateway"

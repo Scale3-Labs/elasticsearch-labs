@@ -14,11 +14,11 @@ RUN mkdir ./api
 RUN mkdir ./data
 
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    software-properties-common \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+  build-essential \
+  curl \
+  software-properties-common \
+  git \
+  && rm -rf /var/lib/apt/lists/*
 
 
 COPY requirements.txt ./requirements.txt
@@ -26,11 +26,11 @@ RUN pip3 install -r ./requirements.txt
 COPY api ./api
 COPY data ./data
 
-EXPOSE 4000
+EXPOSE 3001
 
 # Default to disabling instrumentation, can be overridden to false in
 # docker invocations to reenable.
-ENV OTEL_SDK_DISABLED=true
+ENV OTEL_SDK_DISABLED=false
 
 # https://github.com/elastic/genai-instrumentation/issues/255
 # Currently Python SDK has a bug that spams logs when opentelemetry-instrument is used
@@ -38,9 +38,9 @@ ENV OTEL_SDK_DISABLED=true
 # avoiding opentelemetry-instrument when SDK is disabled.
 RUN echo 'if [ "${OTEL_SDK_DISABLED:-true}" == "false" ]; \
   then \
-    opentelemetry-instrument $@; \
+  opentelemetry-instrument $@; \
   else \
-    exec $@; \
+  exec $@; \
   fi' > entrypoint.sh
 ENTRYPOINT [ "bash", "-eu", "./entrypoint.sh" ]
 CMD [ "python", "api/app.py"]

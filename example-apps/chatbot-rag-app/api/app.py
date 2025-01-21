@@ -7,7 +7,7 @@ from flask import Flask, Response, jsonify, request
 from flask_cors import CORS
 from langtrace_python_sdk import langtrace
 
-langtrace.init()
+langtrace.init(batch=False)
 
 app = Flask(__name__, static_folder="../frontend/build", static_url_path="/")
 CORS(app)
@@ -41,4 +41,4 @@ def create_index():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=4000, debug=False)
+    app.run(host="0.0.0.0", port=3001, debug=False)
