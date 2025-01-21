@@ -236,7 +236,7 @@ multidict==6.1.0
     #   yarl
 mypy-extensions==1.0.0
     # via typing-inspect
-numpy==2.2.2
+numpy
     # via
     #   elasticsearch
     #   langchain
@@ -499,7 +499,6 @@ yarl==1.18.3
     # via aiohttp
 zipp==3.21.0
     # via importlib-metadata
-langchain-elasticsearch==0.3.0
 langtrace-python-sdk>=3.3.14
 # The following packages are considered to be unsafe in a requirements file:
 # pip
